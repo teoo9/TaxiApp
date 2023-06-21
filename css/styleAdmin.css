@@ -1,0 +1,17 @@
+body{
+  background: rgb(163,178,255) !important;
+  background: linear-gradient(173deg, rgba(163,178,255,1) 0%, rgba(150,34,140,1) 46%, rgba(219,152,166,1) 100%) !important;
+  background-image: none;
+}
+
+
+.meni{
+    background: rgb(163,178,255);
+  background: linear-gradient(173deg, rgba(163,178,255,1) 0%, rgba(150,34,140,1) 46%, rgba(219,152,166,1) 100%);
+  }
+
+  .btnAdmin{
+    
+    margin-bottom: 0.5em;
+    /* margin:40px !important;*/
+} 

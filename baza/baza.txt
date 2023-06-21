@@ -1,0 +1,177 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     17.5.2023. 21:49:01                          */
+/*==============================================================*/
+
+
+alter table KORISNIK_VOZAC 
+   drop foreign key FK_KORISNIK_JE_OCENJE_KORISNIK;
+
+alter table KORISNIK_VOZAC 
+   drop foreign key FK_KORISNIK_OCENJUJE_VOZAC;
+
+alter table VOZAC 
+   drop foreign key FK_VOZAC_PRIPADA_VOZILO;
+
+alter table VOZILO 
+   drop foreign key FK_VOZILO_VOZI_VOZAC;
+
+alter table VOZNJA 
+   drop foreign key FK_VOZNJA_KORISNIK__KORISNIK;
+
+alter table VOZNJA 
+   drop foreign key FK_VOZNJA_TARIFA_VO_TARIFA;
+
+alter table VOZNJA 
+   drop foreign key FK_VOZNJA_VOZAC_VOZ_VOZAC;
+
+drop table if exists KORISNIK;
+
+
+alter table KORISNIK_VOZAC 
+   drop foreign key FK_KORISNIK_JE_OCENJE_KORISNIK;
+
+alter table KORISNIK_VOZAC 
+   drop foreign key FK_KORISNIK_OCENJUJE_VOZAC;
+
+drop table if exists KORISNIK_VOZAC;
+
+drop table if exists TARIFA;
+
+
+alter table VOZAC 
+   drop foreign key FK_VOZAC_PRIPADA_VOZILO;
+
+drop table if exists VOZAC;
+
+
+alter table VOZILO 
+   drop foreign key FK_VOZILO_VOZI_VOZAC;
+
+drop table if exists VOZILO;
+
+
+alter table VOZNJA 
+   drop foreign key FK_VOZNJA_KORISNIK__KORISNIK;
+
+alter table VOZNJA 
+   drop foreign key FK_VOZNJA_VOZAC_VOZ_VOZAC;
+
+alter table VOZNJA 
+   drop foreign key FK_VOZNJA_TARIFA_VO_TARIFA;
+
+drop table if exists VOZNJA;
+
+/*==============================================================*/
+/* Table: KORISNIK                                              */
+/*==============================================================*/
+create table KORISNIK
+(
+   IDKORISNIKA          int not null  comment '',
+   IMEKORISNIKA         varchar(30) not null  comment '',
+   PREZIMEKORISNIKA     varchar(40) not null  comment '',
+   EMAILKORISNIKA       varchar(30) not null  comment '',
+   TELKORISNIKA         varchar(10) not null  comment '',
+   LOZINKAKORISNIKA     varchar(30) not null  comment '',
+   STATUSKORISNIKA      varchar(15) not null  comment '',
+   primary key (IDKORISNIKA)
+);
+
+/*==============================================================*/
+/* Table: KORISNIK_VOZAC                                        */
+/*==============================================================*/
+create table KORISNIK_VOZAC
+(
+   IDKORISNIKA          int not null  comment '',
+   IDVOZACA             int not null  comment '',
+   primary key (IDKORISNIKA, IDVOZACA)
+);
+
+/*==============================================================*/
+/* Table: TARIFA                                                */
+/*==============================================================*/
+create table TARIFA
+(
+   IDTARIFE             int not null  comment '',
+   NAZIV                varchar(10) not null  comment '',
+   CENAPOKM             float not null  comment '',
+   ULAZNACENA           float not null  comment '',
+   primary key (IDTARIFE)
+);
+
+/*==============================================================*/
+/* Table: VOZAC                                                 */
+/*==============================================================*/
+create table VOZAC
+(
+   IDVOZACA             int not null  comment '',
+   IDVOZILA             int  comment '',
+   IMEVOZACA            varchar(30) not null  comment '',
+   PREZIMEVOZACA        varchar(40) not null  comment '',
+   TELVOZACA            varchar(10) not null  comment '',
+   ADRESAVOZACA         varchar(50) not null  comment '',
+   POLVOZACA            varchar(10)  comment '',
+   BRDOZVOLE            char(9) not null  comment '',
+   DATUMZAP             date not null  comment '',
+   LOZINKAVOZACA        varchar(30) not null  comment '',
+   ZAPOSLEN             bool not null  comment '',
+   EMAIL                varchar(30) not null  comment '',
+   primary key (IDVOZACA)
+);
+
+/*==============================================================*/
+/* Table: VOZILO                                                */
+/*==============================================================*/
+create table VOZILO
+(
+   IDVOZILA             int not null  comment '',
+   IDVOZACA             int not null  comment '',
+   MARKA                varchar(20) not null  comment '',
+   MODEL                varchar(20) not null  comment '',
+   REG_BR               varchar(10) not null  comment '',
+   GODINAPROIZVODNJE    int not null  comment '',
+   DATUMREG             date not null  comment '',
+   SLIKA                text  comment '',
+   STATUSVOZILA         varchar(15) not null  comment '',
+   primary key (IDVOZILA)
+);
+
+/*==============================================================*/
+/* Table: VOZNJA                                                */
+/*==============================================================*/
+create table VOZNJA
+(
+   IDVOZNJE             int not null  comment '',
+   IDKORISNIKA          int not null  comment '',
+   IDVOZACA             int not null  comment '',
+   IDTARIFE             int not null  comment '',
+   POLAZAK              varchar(40) not null  comment '',
+   ODREDISTE            varchar(40) not null  comment '',
+   UDALJENOST           float  comment '',
+   VREMEPOCETKA         datetime  comment '',
+   VREMEZAVRSETKA       datetime  comment '',
+   STATUS               varchar(20) not null  comment '',
+   primary key (IDVOZNJE)
+);
+
+alter table KORISNIK_VOZAC add constraint FK_KORISNIK_JE_OCENJE_KORISNIK foreign key (IDKORISNIKA)
+      references KORISNIK (IDKORISNIKA);
+
+alter table KORISNIK_VOZAC add constraint FK_KORISNIK_OCENJUJE_VOZAC foreign key (IDVOZACA)
+      references VOZAC (IDVOZACA);
+
+alter table VOZAC add constraint FK_VOZAC_PRIPADA_VOZILO foreign key (IDVOZILA)
+      references VOZILO (IDVOZILA);
+
+alter table VOZILO add constraint FK_VOZILO_VOZI_VOZAC foreign key (IDVOZACA)
+      references VOZAC (IDVOZACA);
+
+alter table VOZNJA add constraint FK_VOZNJA_KORISNIK__KORISNIK foreign key (IDKORISNIKA)
+      references KORISNIK (IDKORISNIKA);
+
+alter table VOZNJA add constraint FK_VOZNJA_TARIFA_VO_TARIFA foreign key (IDTARIFE)
+      references TARIFA (IDTARIFE);
+
+alter table VOZNJA add constraint FK_VOZNJA_VOZAC_VOZ_VOZAC foreign key (IDVOZACA)
+      references VOZAC (IDVOZACA);
+

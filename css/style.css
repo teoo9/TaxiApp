@@ -1,0 +1,150 @@
+body,html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+}       
+
+.forma {
+    background-color: rgba(255, 255, 255, 0.3);
+    max-width: 600px;
+    margin: 0 auto;
+    width: 80%;
+    padding: 2em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+
+.zaglavljeForme p {
+    margin: 0;
+    line-height: 1.5em;
+    font-size: 2em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.zaglavljeForme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.zaglavljeForme img {
+    vertical-align: middle;
+    height: 5em;
+    margin-right: 1em;
+  }
+
+.forma h1{
+text-align: center;
+text-transform: uppercase;
+font-family: "Garamond", "serif",monospace;
+}
+
+.forma p{
+font-family: "Garamond", "serif",monospace;
+font-weight: bold;
+}
+
+
+label {
+font-weight: bold;
+font-family: "Garamond", "serif",monospace;
+display: block;
+margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="password"] {
+padding: 0.5em;
+border-radius: 0.5em;
+border: 1px solid #CCC;
+width: 100%;
+margin-bottom: 1em;
+}
+
+input[type="submit"] {
+font-family: "Garamond", "serif",monospace;
+background-color: 	#8c66ff;
+color: white;
+margin-bottom: 1em;
+padding: 0.5em 1em;
+border-radius: 0.5em;
+border: none;
+cursor: pointer;
+}
+
+input[type="submit"]:hover {
+background-color: #ada7be;
+}
+
+input[type="submit"]{
+text-transform: uppercase;
+font-size: 1em;
+}
+
+.form-buttons{
+display: flex;
+justify-content: center;
+margin-top: 1.5em;
+}
+
+
+.moj_navbar{
+    background: rgb(163,178,255);
+background: linear-gradient(173deg, rgba(163,178,255,1) 0%, rgba(150,34,140,1) 46%, rgba(219,152,166,1) 100%);
+}
+
+.my-data {
+    text-align: center;
+    margin:2em;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black; /* Beli tekst */
+    padding: 20px; /* Margine unutar div-a */
+    border-radius: 10px; /* Zaobljeni ivice */
+    font-family: Arial, sans-serif;
+}
+
+.my-data h1 {
+    font-size: 24px; /* Veličina naslova */
+    margin-bottom: 10px; /* Margina ispod naslova */
+}
+
+.btn-reserve {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c5ce7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reserve:hover {
+    background-color: #a29bfe;
+}
+
+/* Stilizacija ikone */
+.btn-reserve i {
+    margin-left: 5px;
+}
+
+
+
